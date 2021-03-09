@@ -1,0 +1,13 @@
+.header_label{
+    display: flex;
+    align-items: flex-end;
+}
+
+.header_name{
+    flex-grow: 1;
+}
+
+.header_info{
+    font-size: 1.25rem;
+    color: grey;
+}
