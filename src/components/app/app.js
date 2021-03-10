@@ -66,26 +66,26 @@ export default class App extends Component{
     onFilterSearch = (label) => {
       this.setState({temp:label});
     }
-    groupSearchElments = () => {
-        if (this.state.temp.length === 0) {
-            return this.state.toDoData
-        }
-        const newArr = [...this.state.toDoData]
-        return newArr.filter((el) => {
-            if (el.label.toLowerCase().indexOf(this.state.temp.toLowerCase()) >= 0) {
-                return el
-            }
-        })
-    }
+    // groupSearchElments = () => {
+    //     if (this.state.temp.length === 0) {
+    //         return this.state.toDoData
+    //     }
+    //     const newArr = [...this.state.toDoData]
+    //     return newArr.filter((el) => {
+    //         if (el.label.toLowerCase().indexOf(this.state.temp.toLowerCase()) >= 0) {
+    //             return el
+    //         }
+    //     })
+    // }
     render() {
         const countDone = this.state.toDoData.filter((el) => el.done).length;
         const countToDo = this.state.toDoData.length - countDone;
-        const elements = this.groupSearchElments()
+        //const elements = this.groupSearchElments()
         return (
             <div className="todo-app">
                 <Header moreToDo={countToDo} done={countDone}/>
                 <div className="top-panel d-flex"><SearchPanel/></div>
-                <ToDoList todos = {elements} onDeleted = {this.onDeleteItem} onToggleIm = {this.onTogleImportant} onToggleDo = {this.onToggleDone}/>
+                <ToDoList todos = {this.state.toDoData} onDeleted = {this.onDeleteItem} onToggleIm = {this.onTogleImportant} onToggleDo = {this.onToggleDone}/>
                 <AddItem addItem = {this.addItem}/>
             </div>
         )
